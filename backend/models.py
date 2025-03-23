@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from flask_login import UserMixin
 
-db = SQLAlchemy()
+db = SQLAlchemy()   
 
 class Doctor(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

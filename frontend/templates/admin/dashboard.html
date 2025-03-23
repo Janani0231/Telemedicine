@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Healthcare System{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Doctors</h5>
+                    <p class="card-text display-4">{{ total_doctors }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Patients</h5>
+                    <p class="card-text display-4">{{ total_patients }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-info text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Total Appointments</h5>
+                    <p class="card-text display-4">{{ total_appointments }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Appointments -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">Recent Appointments</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Doctor</th>
+                            <th>Patient</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appointment in recent_appointments %}
+                        <tr>
+                            <td>{{ appointment.date.strftime('%Y-%m-%d') }}</td>
+                            <td>{{ appointment.time }}</td>
+                            <td>{{ appointment.doctor.name }}</td>
+                            <td>{{ appointment.patient.name }}</td>
+                            <td>
+                                <span class="badge {% if appointment.status == 'scheduled' %}bg-primary{% elif appointment.status == 'completed' %}bg-success{% else %}bg-warning{% endif %}">
+                                    {{ appointment.status }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">No recent appointments</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Management Actions -->
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="#" class="btn btn-primary">Manage Doctors</a>
+                        <a href="#" class="btn btn-success">Manage Patients</a>
+                        <a href="#" class="btn btn-info">View Reports</a>
+                        <a href="#" class="btn btn-warning">System Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">System Status</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Database Status
+                            <span class="badge bg-success">Online</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Server Status
+                            <span class="badge bg-success">Running</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Last Backup
+                            <span class="badge bg-info">Today</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
