@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Healthcare System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center mb-5">
+        <h1 class="display-4">Welcome to Healthcare System</h1>
+        <p class="lead">Your trusted platform for healthcare management</p>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-user-md fa-3x mb-3 text-primary"></i>
+                <h5 class="card-title">Doctor Registration</h5>
+                <p class="card-text">Are you a healthcare professional? Register here to join our network of doctors.</p>
+                <a href="{{ url_for('main.doctor_registration') }}" class="btn btn-primary">
+                    <i class="fas fa-user-plus me-2"></i>Register as Doctor
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-user fa-3x mb-3 text-success"></i>
+                <h5 class="card-title">Patient Registration</h5>
+                <p class="card-text">New patient? Create your account to access healthcare services.</p>
+                <a href="{{ url_for('main.patient_registration') }}" class="btn btn-success">
+                    <i class="fas fa-user-plus me-2"></i>Register as Patient
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-cog fa-3x mb-3 text-info"></i>
+                <h5 class="card-title">Admin Panel</h5>
+                <p class="card-text">Administrators can access the management panel here.</p>
+                <a href="{{ url_for('main.admin') }}" class="btn btn-info text-white">
+                    <i class="fas fa-cog me-2"></i>Go to Admin Panel
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">About Our Healthcare System</h5>
+                <p class="card-text">We provide a comprehensive healthcare management solution that connects patients with healthcare providers. Our platform offers:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Easy registration process</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Secure patient records</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>Efficient appointment scheduling</li>
+                    <li><i class="fas fa-check-circle text-success me-2"></i>24/7 access to healthcare services</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Contact Information</h5>
+                <p class="card-text">Need help? Contact our support team:</p>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-phone me-2 text-primary"></i>+1 (555) 123-4567</li>
+                    <li><i class="fas fa-envelope me-2 text-primary"></i>support@healthcaresystem.com</li>
+                    <li><i class="fas fa-clock me-2 text-primary"></i>Mon-Fri: 9:00 AM - 6:00 PM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
